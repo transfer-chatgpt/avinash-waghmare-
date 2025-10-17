@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trendora Online Store</title>
+  <style>
+    /* ===== Google Fonts ===== */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    /* ===== Reset & Base ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      color: #111;
+      background-color: #fff;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    ul {
+      list-style: none;
+    }
+    img {
+      max-width: 100%;
+      display: block;
+    }
+    button {
+      border: none;
+      outline: none;
+      cursor: pointer;
+      border-radius: 25px;
+      font-weight: 600;
+      transition: 0.3s ease;
+    }
+
+    /* ===== Header ===== */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 40px;
+      background-color: #000;
+      color: #fff;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    header img {
+      width: 180px;
+      height: auto;
+    }
+    nav ul {
+      display: flex;
+      gap: 25px;
+    }
+    nav ul li a {
+      color: #fff;
+      font-weight: 600;
+      padding: 5px 10px;
+      transition: 0.3s ease;
+    }
+    nav ul li a:hover {
+      color: hotpink;
+      background-color: rgba(255,20,147,0.1);
+      border-radius: 10px;
+    }
+    .search-container input {
+      padding: 7px 15px;
+      border-radius: 25px;
+      border: 1px solid #ccc;
+      transition: 0.3s ease;
+    }
+    .search-container input:focus {
+      border-color: hotpink;
+    }
+    .search-container button {
+      background-color: hotpink;
+      color: #fff;
+      padding: 7px 15px;
+      margin-left: 5px;
+    }
+    .search-container button:hover {
+      background-color: #ff69b4;
+    }
+
+    /* ===== Hero Section ===== */
+    #home {
+      background-image: url('https://images.indianexpress.com/2024/09/amazon-great-indian-festival.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 80vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-align: center;
+      padding: 0 20px;
+    }
+    #home h1 {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+      font-weight: 700;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+    }
+    #home button {
+      background-color: hotpink;
+      color: #fff;
+      padding: 15px 40px;
+      font-size: 1.1rem;
+    }
+    #home button:hover {
+      background-color: #ff69b4;
+      transform: scale(1.05);
+    }
+
+    /* ===== Shop Section ===== */
+    #shop {
+      padding: 60px 40px;
+      background-color: #f9f9f9;
+    }
+    #shop h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      color: #000;
+    }
+    .shop-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 30px;
+    }
+    .product-card {
+      background-color: #fff;
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: 0.3s ease;
+    }
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+    .product-card h3 {
+      margin: 15px 0 10px 0;
+      font-size: 1.2rem;
+      color: #111;
+    }
+    .product-card p {
+      font-weight: 600;
+      color: hotpink;
+      margin-bottom: 15px;
+    }
+    .product-card button {
+      background-color: #000;
+      color: #fff;
+      padding: 10px 25px;
+    }
+    .product-card button:hover {
+      background-color: hotpink;
+      color: #fff;
+    }
+
+    /* ===== About Section ===== */
+    #about {
+      padding: 60px 40px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      align-items: center;
+      justify-content: center;
+    }
+    #about p {
+      flex: 1 1 350px;
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #111;
+    }
+    #about img {
+      flex: 1 1 300px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    /* ===== Contact Section ===== */
+    #contact {
+      padding: 60px 40px;
+      background-color: #f1f1f1;
+      text-align: center;
+    }
+    #contact form {
+      max-width: 500px;
+      margin: 0 auto 20px auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    #contact input, #contact textarea {
+      padding: 12px 15px;
+      border-radius: 25px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+    #contact button {
+      background-color: hotpink;
+      color: #fff;
+      padding: 12px 25px;
+      font-size: 1rem;
+    }
+    #contact button:hover {
+      background-color: #ff69b4;
+      transform: scale(1.05);
+    }
+    #contact p {
+      margin-top: 15px;
+      font-weight: 600;
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      background-color: #000;
+      color: #fff;
+      padding: 25px 40px;
+      text-align: center;
+    }
+    footer li {
+      margin: 8px 0;
+      font-weight: 500;
+    }
+    footer li:hover {
+      color: hotpink;
+    }
+
+    /* ===== Responsive ===== */
+    @media(max-width:768px){
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav ul {
+        flex-direction: column;
+        gap: 10px;
+      }
+      #home h1 {
+        font-size: 2rem;
+      }
+      #shop {
+        padding: 40px 20px;
+      }
+      #about {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== Header ===== -->
+  <header>
+    <img src="https://cdn.vectorstock.com/i/1000v/93/03/shopping-bag-line-icon-on-black-background-vector-26849303.jpg " alt="Trendora Logo">
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#shop">Shop</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="search-container">
+      <form action="/search" method="get">
+        <input type="search" name="q" placeholder="Search...">
+        <button type="submit">Search</button>
+      </form>
+    </div>
+  </header>
+
+  <!-- ===== Hero Section ===== -->
+  <section id="home">
+    <button onclick="scrollToShop()">Shop Now</button>
+  </section>
+
+  <!-- ===== Shop Section ===== -->
+  <section id="shop">
+    <h2>Our Trending Products</h2>
+    <div class="shop-container">
+      <div class="product-card">
+        <img src="https://m.media-amazon.com/images/I/71MXmswILHL._AC_UY218_.jpg" alt="iphone17">
+        <h3>iPhone 17</h3>
+        <p>?1,49,900</p>
+        <button onclick="addToCart('iPhone 17')">Add to Cart</button>
+      </div>
+      <div class="product-card">
+        <img src="https://m.media-amazon.com/images/I/61CS57besdL._UF894,1000_QL80_.jpg" alt="Kaju katli">
+        <h3>Kaju Katli</h3>
+        <p>?115</p>
+        <button onclick="addToCart('Kaju Katli')">Add to Cart</button>
+      </div>
+      
+      <div class="product-card">
+        <img src="https://m.media-amazon.com/images/I/61gvNkugY4L._AC_UL320_.jpg" alt="Noise smartwatch">
+        <h3>Noise Smartwatch</h3>
+        <p>?1,999</p>
+        <button onclick="addToCart('Noise Smartwatch')">Add to Cart</button>
+      </div>
+      <div class="product-card">
+        <img src="https://m.media-amazon.com/images/I/71Nwtop9jtL._AC_UY218_.jpg" alt="Samsung galaxy S24">
+        <h3>Samsung Galaxy S24</h3>
+        <p>?79,999</p>
+        <button onclick="addToCart('Samsung Galaxy S24')">Add to Cart</button>
+      </div>
+      <div class="product-card">
+        <img src="https://m.media-amazon.com/images/I/51gCpv7DO4L._SX679_.jpg " alt="Macbook">
+        <h3>Macbook</h3>
+        <p>?1,99,999</p>
+        <button onclick="addToCart('Macbook')">Add to Cart</button>
+      </div>
+ 
+    
+      <div class="product-card">
+        <img src="https://m.media-amazon.com/images/I/71U3l9gAkHL._SL1360_.jpg" alt="book" width="175">
+        <h3>Rich Dad-poor Dad (Marathi)</h3>
+        <p>?999</p>
+        <button onclick="addToCart('Rich Dad-poor Dad')">Add to Cart</button>
+      </div>
+      <div class="product-card">
+        <img src="https://m.media-amazon.com/images/I/61Sd++pcbcL._SY425_.jpg " alt="image">
+        <h3>Chhava</h3>
+        <p>?399</p>
+        <button onclick="addToCart('Chhava')">Add to Cart</button>
+      </div>
+      <div class="product-card">
+        <img src="https://images-eu.ssl-images-amazon.com/images/I/81IljEVifkL._AC_UL232_SR232,232_.jpg" alt="image">
+        <h3>Frame image of phule couple</h3>
+        <p>?1,999,</p>
+        <button onclick="addToCart('Frame image ')">Add to Cart</button>
+      </div>
+    <div class="product-card">
+        <img src=" https://m.media-amazon.com/images/I/71oIIisjWJL._SY450_.jpg" alt="image">
+        <h3>BOT ear-phone</h3>
+        <p>?999</p>
+        <button onclick="addToCart('BOT ear-phone  ')">Add to Cart</button>
+      </div>
+      <div class="product-card">
+        <img src="https://www.eourmart.com/cdn/shop/products/gita.webp?v=1675680091&width=493 " alt="image">
+        <h3>Bhagwat gita </h3>
+        <p>?349</p>
+        <button onclick="addToCart('Bhgwat gita ')">Add to Cart</button>
+      </div>
+ </div>
+  </section>
+
+  <!-- ===== About Section ===== -->
+  <section id="about">
+    <p>Tendora is a fast-growing e-commerce platform that brings 
+      the world’s best products right to your doorstep. Founded with a vision to make online shopping simple, convenient, and reliable, Tendora offers a wide range of categories from electronics and fashion to home essentials and groceries. With a user-friendly interface, secure payment options, and lightning-fast delivery, Tendora is quickly becoming the go-to destination for customers who want quality, variety, and trust all in one place. Every purchase on Tendora is designed to delight, making shopping not just easy, but enjoyable.
+    </p>
+    <img src="https://www.shutterstock.com/image-photo/shopping-forever-fulllength-photo-mom-260nw-1659515515.jpg" alt="shopping illustration">
+  </section>
+
+  <!-- ===== Contact Section ===== -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <form id="contact-form">
+      <input type="text" id="name" name="name" placeholder="Your Name" required>
+      <input type="email" id="email" name="email" placeholder="Your Email" required>
+      <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+    <p>Phone: +91 9876543210 | Email: support@tendora.com | Address: Mumbai, India</p>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    <ul>
+      <li>Instagram | YouTube | Twitter</li>
+      <li>&copy; 2025 a clone project by Avinash waghmare MIT </li>
+    </ul>
+  </footer>
+
+  <!-- ===== JavaScript ===== -->
+  <script>
+    function addToCart(productName) {
+      alert(productName + " added to cart!");
+    }
+
+    function scrollToShop() {
+      document.getElementById("shop").scrollIntoView({ behavior: "smooth" });
+    }
+
+    document.getElementById("contact-form").addEventListener("submit", function(e){
+      e.preventDefault();
+      alert("Thank you " + document.getElementById("name").value + ", your message has been sent!");
+      this.reset();
+    });
+  </script>
+
+</body>
+</html>
